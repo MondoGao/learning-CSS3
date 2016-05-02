@@ -1,0 +1,189 @@
+/*Reset*/
+html {
+  width: 100%;
+  height: 100%;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -o-text-size-adjust: none;
+}
+body {
+  width: 100%;
+  height: 100%;
+  padding-top: 200px;
+  background: #47c9af;
+  color: #74777b;
+  font: {
+    weight: 300;
+    size: 1.5em;
+    font-family: "Microsoft Yahei", "Arial";
+  }
+}
+ul {
+  list-style: none;
+}
+a:focus,
+a:link,
+a:visited {
+  text-decoration: none;
+  outline: none;
+}
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: transform .25s, opacity .25s, color .25s;
+}
+*:after,
+*:before {
+  content: "";
+  display: block;
+}
+*:after {
+  clear: both;
+}
+/*Nav*/
+.nav {
+  width: 800px;
+  height: 300px;
+  margin: 0 auto;
+  li {
+    display: inline-block;
+    margin: 0 1em;
+    a.tooltip {
+      display: inline-block;
+      position: relative;
+      font-weight: 700;
+      color: rgba(0, 0, 0, 0.3);
+      padding: 0.15em 0.25em 0;
+      perspective: 200px;
+      transform-style: preserve-3d;
+      span.tooltip-content {
+        color: #47c9af;
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -40px;
+        margin-bottom: 1em;
+        padding-top: 0.7em;
+        font-size: 1.3em;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: #fff;
+        text-align: center;
+        opacity: 0;
+        pointer-events: none;
+        &:after {
+          width: 30px;
+          height: 20px;
+          background: url("../img/tooltip1.svg") no-repeat center center/100% 100%;
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translate(-50%, -7px);
+        }
+      }
+      &.tooltip-1 {
+        span.tooltip-content {
+          transform-origin: center calc(100% + 6px);
+          transform: translateY(10px) rotate3d(1,1,1, 45deg);
+          i {
+            transition-delay: .05s;
+            transform: scale3d(0,0,1);
+          }
+        }
+      }
+      &.tooltip-2 {
+        span.tooltip-content {
+          transform-origin: center calc(100% + 6px);
+          transform: translateY(10px);
+          i {
+            transition-delay: .03s;
+            transform: translateY(10px);
+            opacity: 0;
+          }
+        }
+      }
+      &.tooltip-3 {
+        perspective-origin: center -100%;
+        span.tooltip-content {
+          transform: rotateY(90deg);
+          i {
+            transition-delay: .05s;
+            transform: scale3d(0,0,1);
+          }
+        }
+      }
+      &.tooltip-4 {
+        span.tooltip-content {
+          transform: translateY(-20px);
+          i {
+            transform: translateY(20px);
+          }
+        }
+      }
+      &.tooltip-5 {
+        span.tooltip-content {
+          transform-origin: center calc(100% + 6px);
+          transform: scale3d(0,0,1);
+          i {
+            transform-origin: center 100%;
+            transform: scale3d(0,0,1);
+          }
+        }
+      }
+    }
+    &:hover {
+      a.tooltip {
+        color: white;
+        span.tooltip-content{
+          opacity: 1;
+        }
+        &.tooltip-1 {
+          span.tooltip-content {
+            transform: translateY(0) rotate3d(1,1,1, 0);
+            i{
+              transform: scale3d(1,1,1);
+            }
+          }
+        }
+        &.tooltip-2 {
+          span.tooltip-content {
+            transform: translateY(0);
+            i{
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }
+        }
+        &.tooltip-3 {
+          span.tooltip-content {
+            transform: rotateY(0);
+            i{
+              transform: scale3d(1,1,1);
+            }
+          }
+        }
+        &.tooltip-4 {
+          span.tooltip-content {
+            transform: translateY(0);
+            i{
+              transform: translateY(0);
+            }
+          }
+        }
+        &.tooltip-5 {
+          span.tooltip-content {
+            transform: scale3d(1,1,1);
+            i{
+              transform: scale3d(1,1,1);
+            }
+          }
+        }
+      }
+    }
+  }
+}

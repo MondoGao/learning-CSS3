@@ -1,0 +1,50 @@
+@mixin circle-window {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+@mixin abs-top-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.demo {
+  position: relative;
+  display: block;
+  &:hover {
+    .mask {
+      color: rgba(255, 255 , 255, 1);
+      background-color: rgba(0, 0, 0, .5);
+    }
+    .border {
+      transform: rotate(180deg);
+    }
+  }
+  @include circle-window;
+}
+.img {
+  background-image: url("http://ww3.sinaimg.cn/mw690/9c7cd2cdjw1e60hntjcq2j211y0lcq5e.jpg");
+  background-size: cover;
+  background-position: center;
+  @include circle-window;
+}
+.border {
+  border: 10px solid #072256;
+  border-left-color: #e07514;
+  border-top-color: #e07514;
+  transition: 0.5s;
+  box-sizing: border-box;
+  @include circle-window;
+  @include abs-top-left;
+}
+.mask {
+  color: rgba(255, 255 , 255, 0);
+  text-align: center;
+  transition: 0.5s;
+  @include circle-window;
+  @include abs-top-left;
+}
+.info {
+  margin-top: 50%;
+  transform: translateY(-50%);
+}

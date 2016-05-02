@@ -1,0 +1,126 @@
+@mixin img-insert {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  opacity: 0.9;
+  transition: .3s;
+}
+body,
+figcaption,
+figure,
+h2,
+img,
+p,
+div {
+  margin: 0;
+  padding: 0;
+  font-family: "Microsoft Yahei";
+  transition: .3s;
+}
+body{
+  display: flex;
+  flex-wrap: wrap;
+}
+figure{
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  background-color: #000;
+  p{
+    transition: .3s;
+  }
+  figcaption{
+    position: absolute;
+    top: 0;
+    color: rgb(255, 255, 255);
+  }
+  &:nth-of-type(odd)::before{
+    background-image: url(../img/bg1.jpg);
+    @include img-insert;
+  }
+  &:nth-of-type(even)::before{
+    background: url(../img/bg2.jpg);
+    @include img-insert;
+  }
+  @media (min-width: 500px) {
+    &{
+      width: 50%;
+    }
+  }
+  @media (min-width: 900px) {
+    &{
+      width: 33.333%;
+    }
+  }
+  &:first-child{
+    figcaption{
+      padding: 20px;
+      h2{
+        transform: translate(-120px);
+        transition-delay: -.05s;
+      }
+      p{
+        background: #fff;
+        color: #333;
+        margin: 3px;
+        text-align: center;
+        transform: translate(-120px);
+        transition-delay: .1s;
+        &:nth-of-type(2){
+          transition-delay: .05s;
+        }
+        &:nth-of-type(3){
+          transition-delay: .03s;
+        }
+      }
+    }
+    &:hover{
+      &::before{
+        background-position: -50px center;
+        opacity: 0.5;
+      }
+      p, h2{
+        transform: translate(0);
+      }
+    }
+  }
+  &:nth-child(2){
+    figcaption{
+      width: 100%;
+      height: 100%;
+      padding: 15%;
+      box-sizing: border-box;
+      div{
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        bottom: 10%;
+        right: 10%;
+        border: 2px solid #fff;
+        transform: translate(0, -350px) rotate(-360deg);;
+      }
+      p, h2{
+        transform: translate(0, 150px);
+        opacity: 0;
+      }
+    }
+    &:hover{
+      &::before{
+        opacity: 0.5;
+        transform: scale(1.2);
+      }
+      figcaption{
+        div{
+          transform: translate(0, 0) rotate(0);;
+        }
+        p, h2{
+          transform: translate(0, 0) rotate(0);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
